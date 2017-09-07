@@ -47,7 +47,7 @@ _getNewEvilPort(){
     read -r -p "Enter the port number of the ""EVIL"" host: " NEWEVILPORT
   done
   # replace default port number 1337 in backdoor.html
-  sed 's/:1337/:$NEWEVILPORT/g' poisontap/backdoor.html
+  sed -i "s/:1337/:$NEWEVILPORT/g" poisontap/backdoor.html
 }
 
 # elevate privileges to root
