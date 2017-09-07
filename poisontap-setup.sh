@@ -35,8 +35,8 @@ _getNewEvilHostname(){
     read -r -p "Enter the hostname of the ""EVIL"" host: " NEWEVILHOSTNAME
   done
   # replace YOUR.DOMAIN in backdoor.html and target_backdoor.js
-  sed -i 's/YOUR.DOMAIN/$NEWEVILHOSTNAME/g' poisontap/backdoor.html
-  sed -i 's/YOUR.DOMAIN/$NEWEVILHOSTNAME/g' poisontap/target_backdoor.js
+  sed -i "s/YOUR.DOMAIN/$NEWEVILHOSTNAME/g" poisontap/backdoor.html
+  sed -i "s/YOUR.DOMAIN/$NEWEVILHOSTNAME/g" poisontap/target_backdoor.js
 }
 
 _getNewEvilPort(){
