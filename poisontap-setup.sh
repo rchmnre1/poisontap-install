@@ -33,7 +33,7 @@ _getNewEvilHostname(){
 
   read -r -p "Enter the hostname of the ""EVIL"" host [YOUR.DOMAIN]: " NEWEVILHOSTNAME
 
-  if [[ -n "$NEWEVILHOSTNAME" ]] # string is not empty
+  if [[ -n "$NEWEVILHOSTNAME" ]] ; then # string is not empty
     # replace YOUR.DOMAIN in backdoor.html and target_backdoor.js
     sed -i "s/YOUR.DOMAIN/$NEWEVILHOSTNAME/g" poisontap/backdoor.html
     sed -i "s/YOUR.DOMAIN/$NEWEVILHOSTNAME/g" poisontap/target_backdoor.js
@@ -47,7 +47,7 @@ _getNewEvilPort(){
 
   read -r -p "Enter the port number of the ""EVIL"" host [1337]: " NEWEVILPORT
 
-  if [[ -n "$NEWEVILPORT" ]] # string is not empty
+  if [[ -n "$NEWEVILPORT" ]] ; then # string is not empty
     # replace default port number 1337 in backdoor.html
     sed -i "s/:1337/:$NEWEVILPORT/g" poisontap/backdoor.html
   fi
