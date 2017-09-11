@@ -87,14 +87,16 @@ echo
 echo Appending lines to complete config...
 echo -e "\nauto usb0\nallow-hotplug usb0\niface usb0 inet static\n\taddress 1.0.0.1\n\tnetmask 0.0.0.0" >> /etc/network/interfaces
 echo "dtoverlay=dwc2" >> /boot/config.txt
-echo -e "dwc2\ng_ether" >> /etc/modules
+echo -e 'dwc2\ng_ether' >> /etc/modules
 # echo "/bin/sh /home/pi/poisontap/pi_startup.sh" >> /etc/rc.local # Replaced by lines in next section
 
 # Addition from https://www.security-sleuth.com/sleuth-blog/2017/3/6/installing-poison-tap-for-dummies-the-most-complete-guide
 # echo 'INTERFACES="usb0"' >> /etc/default/isc-dhcp-server
 cp /home/pi/poisontap/pi_startup.sh /etc/init.d/
 chmod +x /etc/init.d/pi_startup.sh
-sed '$i/etc/init.d/pi_startup.sh &' >> /etc/rc.local # insert line on the line before the last one (which should be "exit 0")
+#sed '$i/etc/init.d/pi_startup.sh &' /etc/rc.local >> /etc/rc.local # insert line on the line before the last one (which should be "exit 0")
+sed '$i/etc/init.d/pi_startup.sh &' /etc/rc.local
+sed '$i/etc/init.d/pi_startup.sh &' /etc/rc.local > rc.local.new
 
 echo
 echo Finish device setup...
